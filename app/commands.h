@@ -7,3 +7,4 @@
 #define SETPSW "setpsw"
 #define SETNAME "setname"
 #define STOP "stop"
+#define REMINDER "reminder"
