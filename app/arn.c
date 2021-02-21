@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <signal.h>
 #include "commands.h"
 
 
@@ -40,6 +41,8 @@ void seetime();
 void hello();
 void setpsw();
 void setname();
+void reminder();
+void ALARMhandler(int sig);
 void stop();
 
 
@@ -122,6 +125,14 @@ void evaluate(char *buffer){
     else if(strcmp(buffer, SETNAME) == 0){
         //calls the command
         setname();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, REMINDER) == 0){
+        //calls the command
+        
+        reminder();
         //returns to the prompt
         prompt();
     }
@@ -254,6 +265,61 @@ void setname(){
     //Frees some memory
     fclose(file);
     free(name);
+
+}
+
+
+void reminder(){
+
+    printf("\nNOTE: you have to keep the program running if you want the alarm to work\n");
+
+    int h, m, s;
+    //prompts the user for when the alarm should go off
+    printf("\nHours from now: ");
+    scanf("%d", &h);
+
+    if(h > 12 || h < 0){
+        printf("\n\n\nERR: Not a valid time\n\n\n");
+        exit(1);
+    }
+    //Starts alarm if everything went well
+    else{
+        int htos = h * 3600;//stands for hours to seconds
+        sleep(htos);
+
+        system("notify-send alarm");
+    }
+
+    printf("\nMinutes from now: ");
+    scanf("%d", &m);
+
+    //Checks if the time inputted is a valid time period
+    if(m > 60 || h < 0){
+        printf("\n\n\nERR: Not a valid time\n\n\n");
+        exit(1);
+    }
+    //Starts alarm if everything went well
+    else{
+        int mtos = m * 60;//stands for minutes to seconds
+        sleep(mtos);
+        
+        system("notify-send alarm");
+    }
+
+    printf("\nSeconds from now: ");
+    scanf("%d", &s);
+
+    if(s > 60 || s < 0){
+        printf("\n\n\nERR: Not a valid time\n\n\n");
+        exit(1);
+    }
+
+    else{
+        sleep(s);
+
+        system("notify-send alarm");
+    }
+
 
 }
 
