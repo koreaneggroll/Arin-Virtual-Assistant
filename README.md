@@ -5,3 +5,7 @@
 INSTRUCTIONS{
   Instructions coming soon!
 }
+
+
+
+All copyrights reserved. For now.
