@@ -49,38 +49,41 @@ int main(void){
 
     //READS FROM THE FILES TO SET THE PASSWORD OF THE USER
     FILE *file;
-
+    //opens the file
     file = fopen("pass.txt", "rb");
-
+    //Error handling
     if(file == NULL){
         printf("\n\n\nWARNING: No password set\n\n\n");
     }
-    
+    //if the file exists it reads it and stores the data in user.password
     else{
         fseek(file, SEEK_END, 0);
         ftell(file);
         rewind(file);
         fread(user.password, 25, 1, file);
+        //closes the file
         fclose(file);
     }
 
     
     
     
-        //READS FROM THE FILES TO SET THE NAME OF THE USER
+    //READS FROM THE FILES TO SET THE NAME OF THE USER
     FILE *fp;
-
+    //Opens the file
     fp = fopen("name.txt", "rb");
-
+    //Error handling
     if(fp == NULL){
+        //Gives a warning
         printf("\n\n\nWARNING: No name set\n\n\n");
     }
-    
+    //If the file exists it reads it and stores the data in user.name
     else{
         fseek(fp, SEEK_END, 0);
         ftell(fp);
         rewind(fp);
         fread(user.name, 25, 1, fp);
+        //closes the file
         fclose(fp);
     }
 
@@ -96,30 +99,41 @@ int main(void){
 
 void evaluate(char *buffer){
     if(strcmp(buffer, TIME) == 0){
+        //calls the command
         seetime();
+        //returns to the prompt
         prompt();
     }
 
     else if(strcmp(buffer, HELLO) == 0){
+        //calls the command
         hello();
+        //returns to the prompt
         prompt();
     }
 
     else if(strcmp(buffer, SETPSW) == 0){
+        //calls the command
         setpsw();
+        //returns to the prompt
         prompt();
     }
 
     else if(strcmp(buffer, SETNAME) == 0){
+        //calls the command
         setname();
+        //returns to the prompt
         prompt();
     }
 
     else if(strcmp(buffer, STOP) == 0){
+        //calls the command
         stop();
+        //returns to the prompt
         prompt();
     }
 
+    //If it goes through all the if statements we know that there isn't a command with that name
     else{
         printf("\nNo Instruction '%s'\n", buffer);
     }
@@ -138,14 +152,14 @@ void seetime(){
 
     time ( &rawtime );
     timeinfo = localtime ( &rawtime );
-    printf ( "Current local time and date: %s", asctime (timeinfo) );
+    printf("\nCurrent local time and date: %s\n", asctime (timeinfo));
 }
 
 
 
 //Responds with 'hello + username'
 void hello(){
-    printf("Hello %s\n", user.name);
+    printf("\nHello %s\n", user.name);
 }
 
 
@@ -237,13 +251,14 @@ void setname(){
 
     fprintf(file, "%s", name);
 
+    //Frees some memory
     fclose(file);
     free(name);
 
 }
 
 
-
+//halts the program
 void stop(){
     exit(1);
 }
@@ -253,9 +268,9 @@ void stop(){
 //Prompts the user for a command
 void prompt(){
 
-    char buffer[50];
+    char *buffer = (char*)malloc(sizeof(char) * 25);
 
-
+    //Error handling
     if(buffer == NULL){
         printf("\n\n\nERR: Couldn't allocate memory to 'buffer'\n\n\n");
         exit(1);
@@ -271,4 +286,8 @@ void prompt(){
         //Calls a function to evaluate what it should do based on the buffer
         evaluate(buffer);
     }
+
+    //frees some memory
+    free(buffer);
+
 }
