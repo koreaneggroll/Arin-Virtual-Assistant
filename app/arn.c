@@ -13,6 +13,7 @@
 typedef struct{
 
     char name[25];
+    char password[25];
 
 }User;
 typedef User usr;
@@ -93,7 +94,14 @@ void hello(){
 
 
 void setpsw(){
-    char* pass;
+    char* pass = (char*)malloc(sizeof(char) * 25);
+
+
+    if(pass == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+    }
+
+
     int ch;
     do{
         printf("\nNew Password: ");
@@ -102,7 +110,7 @@ void setpsw(){
 
         printf("new password is: %s\n", pass);
 
-        printf("Set this as your password? (y = 1/n = 0): ");
+        printf("Set this as your password? (1 = y/0 = n): ");
         scanf("%d", &ch);
     }while(ch != 1);
 
@@ -110,16 +118,30 @@ void setpsw(){
 
     file = fopen("pass.txt", "w");
 
+
+    if(file == NULL){
+        printf("\n\n\nERR: Couldn't open file\n\n\n");
+        exit(1);
+    }
+
+
     fprintf(file, "%s", pass);
 
     fclose(file);
+    free(pass);
 
 }
 
 
 
 void setname(){
-    char* name;
+    char* name = (char*)malloc(sizeof(char) * 25);
+
+    if(name == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
     int ch;
     do{
         printf("\nWhat's your name? ");
@@ -127,7 +149,7 @@ void setname(){
 
         printf("Your Name: %s\n", name);
 
-        printf("Set this as your name? (y = 1/n = 0): ");
+        printf("Set this as your name? (1 = y/0 = n): ");
         scanf("%d", &ch);
 
     }while(ch != 1);
@@ -136,9 +158,17 @@ void setname(){
 
     file = fopen("name.txt", "w");
 
+
+    if(file == NULL){
+        printf("\n\n\nERR: Couldn't open file\n\n\n");
+        exit(1);
+    }
+
+
     fprintf(file, "%s", name);
 
     fclose(file);
+    free(name);
 
 }
 
