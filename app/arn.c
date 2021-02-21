@@ -4,22 +4,11 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include "commands.h"
 
-
-//DEFINES
-#define true 1
-#define false 0
-#define clear() printf("\e[1;1H\e[2J");
 
 
 //DATA
-typedef enum{
-    Setpsw,
-    Hello,
-    Time,
-    Exit,
-}commands;
-
 
 typedef struct{
 
@@ -34,31 +23,50 @@ usr user;
 //PROTOTYPES
 void prompt();
 void evaluate(char *buffer);
+void seetime();
+void hello();
+void setpsw();
+void setname();
+int stop();
 
 
 
 
 int main(void){
+    clear();
     prompt();
 }
 
 
 
 void evaluate(char *buffer){
-    if(strcmp(buffer, Time)){
-        //TODO
+    if(strcmp(buffer, TIME) == 0){
+        seetime();
+        prompt();
     }
 
-    else if(strcmp(buffer, Hello)){
-        //TODO
+    else if(strcmp(buffer, HELLO) == 0){
+        hello();
+        prompt();
     }
 
-    else if(strcmp(buffer, Setpsw)){
-        //TODO
+    else if(strcmp(buffer, SETPSW) == 0){
+        setpsw();
+        prompt();
     }
 
-    else if(strcmp(buffer, Exit)){
-        //TODO
+    else if(strcmp(buffer, SETNAME) == 0){
+        setname();
+        prompt();
+    }
+
+    else if(strcmp(buffer, STOP) == 0){
+        stop();
+        prompt();
+    }
+
+    else{
+        printf("\nNo Instruction '%s'\n", buffer);
     }
 }
 
@@ -67,42 +75,85 @@ void evaluate(char *buffer){
 //COMMAND FUNCTIONS
 
 //prints out what time and date it is
-void time(){
+void seetime(){
+    time_t rawtime;
+    struct tm * timeinfo;
 
+    time ( &rawtime );
+    timeinfo = localtime ( &rawtime );
+    printf ( "Current local time and date: %s", asctime (timeinfo) );
 }
 
 
 
 void hello(){
-
-    if(user.name == NULL){
-        printf("Hello there\n");
-    }
-
-    else{
-        printf("Hello %s\n", user.name);
-    }
+    printf("Hello %s\n", user.name);
 }
 
 
 
 void setpsw(){
+    char* pass;
+    int ch;
+    do{
+        printf("\nNew Password: ");
+        scanf("%s", pass);
+
+
+        printf("new password is: %s\n", pass);
+
+        printf("Set this as your password? (y = 1/n = 0): ");
+        scanf("%d", &ch);
+    }while(ch != 1);
+
+    FILE* file;
+
+    file = fopen("pass.txt", "w");
+
+    fprintf(file, "%s", pass);
+
+    fclose(file);
 
 }
 
 
 
-void exit(){
-    exit(0);
+void setname(){
+    char* name;
+    int ch;
+    do{
+        printf("\nWhat's your name? ");
+        scanf("%s", name);
+
+        printf("Your Name: %s\n", name);
+
+        printf("Set this as your name? (y = 1/n = 0): ");
+        scanf("%d", &ch);
+
+    }while(ch != 1);
+
+    FILE *file;
+
+    file = fopen("name.txt", "w");
+
+    fprintf(file, "%s", name);
+
+    fclose(file);
+
+}
+
+
+
+int stop(){
+    return 1;
 }
 
 
 
 
 void prompt(){
-    clear();
 
-    char *buffer = (char*)malloc(sizeof(char) * 50);
+    char buffer[50];
 
 
     if(buffer == NULL){
