@@ -48,6 +48,9 @@ void wikipedia();
 void editor();
 void terminal();
 void todo();
+void skype();
+void music();
+void youtube();
 void stop();
 
 
@@ -106,12 +109,15 @@ int main(void){
 
 
 void evaluate(char *buffer){
+
     if(strcmp(buffer, TIME) == 0){
         //calls the command
         seetime();
         //returns to the prompt
         prompt();
     }
+
+
 
     else if(strcmp(buffer, HELLO) == 0){
         //calls the command
@@ -120,6 +126,8 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
     else if(strcmp(buffer, SETPSW) == 0){
         //calls the command
         setpsw();
@@ -127,12 +135,16 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
     else if(strcmp(buffer, SETNAME) == 0){
         //calls the command
         setname();
         //returns to the prompt
         prompt();
     }
+
+
 
     else if(strcmp(buffer, REMINDER) == 0){
         //calls the command
@@ -142,12 +154,16 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
     else if(strcmp(buffer, GOOGLE) == 0){
         //calls the command
         google();
         //returns to the prompt
         prompt();
     }
+
+
 
     else if(strcmp(buffer, STACKOVERFLOW) == 0){
         //calls the command
@@ -156,12 +172,16 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
     else if(strcmp(buffer, WIKIPEDIA) == 0){
         //calls the command
         wikipedia();
         //returns to the prompt
         prompt();
     }
+
+
 
     else if(strcmp(buffer, EDITOR) == 0){
         //calls the command
@@ -170,12 +190,16 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
     else if(strcmp(buffer, TERMINAL) == 0){
         //calls the command
         terminal();
         //returns to the prompt
         prompt();
     }
+
+
 
     else if(strcmp(buffer, TODO) == 0){
         //calls the command
@@ -184,12 +208,50 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
+    else if(strcmp(buffer, SKYPE) == 0){
+        //calls the command
+        skype();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, MUSIC) == 0){
+        //calls the command
+        music();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, YOUTUBE) == 0){
+        //calls the command
+        youtube();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, CLEAR) == 0){
+        //calls the command
+        clear();
+        //returns to the prompt
+        prompt();
+    }
+
+
     else if(strcmp(buffer, STOP) == 0){
         //calls the command
         stop();
         //returns to the prompt
         prompt();
     }
+
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -318,6 +380,7 @@ void setname(){
 }
 
 
+
 void reminder(){
 
     printf("\nNOTE: you have to keep the program running if you want the alarm to work\n");
@@ -380,10 +443,12 @@ void google(){
 }
 
 
+
 void stackoverflow(){
     //use your prefered browser
     system("brave https://stackoverflow.com/");
 }
+
 
 
 void wikipedia(){
@@ -392,10 +457,12 @@ void wikipedia(){
 }
 
 
+
 void editor(){
     //use your preffered text editor 
     system("atom");
 }
+
 
 
 void terminal(){
@@ -403,9 +470,32 @@ void terminal(){
     system("yakuake");
 }
 
+
+
 void todo(){
     //use your preffered to do app
     system("todo");
+}
+
+
+
+//This function is for my use
+void skype(){
+    system("skype");
+}
+
+
+
+void music(){
+    //use your preffered streaming service
+    system("spotify");
+}
+
+
+
+void youtube(){
+    //use your preffered browser
+    system("brave https://youtube.com");
 }
 
 //halts the program
