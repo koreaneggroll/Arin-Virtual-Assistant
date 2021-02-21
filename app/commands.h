@@ -11,3 +11,6 @@
 #define GOOGLE "g"
 #define STACKOVERFLOW "so"
 #define WIKIPEDIA "wiki"
+#define EDITOR "editor"
+#define TERMINAL "terminal"
+#define TODO "todo"

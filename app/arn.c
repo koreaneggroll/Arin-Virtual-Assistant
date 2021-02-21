@@ -45,6 +45,9 @@ void reminder();
 void google();
 void stackoverflow();
 void wikipedia();
+void editor();
+void terminal();
+void todo();
 void stop();
 
 
@@ -156,6 +159,27 @@ void evaluate(char *buffer){
     else if(strcmp(buffer, WIKIPEDIA) == 0){
         //calls the command
         wikipedia();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, EDITOR) == 0){
+        //calls the command
+        editor();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, TERMINAL) == 0){
+        //calls the command
+        terminal();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, TODO) == 0){
+        //calls the command
+        todo();
         //returns to the prompt
         prompt();
     }
@@ -357,17 +381,32 @@ void google(){
 
 
 void stackoverflow(){
-    //user your prefered browser
+    //use your prefered browser
     system("brave https://stackoverflow.com/");
 }
 
 
 void wikipedia(){
-    //user your preffered browser
+    //use your preffered browser
     system("brave https://wikipedia.com/");
 }
 
 
+void editor(){
+    //use your preffered text editor 
+    system("atom");
+}
+
+
+void terminal(){
+    //use your preffered text editor
+    system("yakuake");
+}
+
+void todo(){
+    //use your preffered to do app
+    system("todo");
+}
 
 //halts the program
 void stop(){
