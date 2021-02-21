@@ -42,7 +42,9 @@ void hello();
 void setpsw();
 void setname();
 void reminder();
-void ALARMhandler(int sig);
+void google();
+void stackoverflow();
+void wikipedia();
 void stop();
 
 
@@ -131,8 +133,29 @@ void evaluate(char *buffer){
 
     else if(strcmp(buffer, REMINDER) == 0){
         //calls the command
-        
+
         reminder();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, GOOGLE) == 0){
+        //calls the command
+        google();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, STACKOVERFLOW) == 0){
+        //calls the command
+        stackoverflow();
+        //returns to the prompt
+        prompt();
+    }
+
+    else if(strcmp(buffer, WIKIPEDIA) == 0){
+        //calls the command
+        wikipedia();
         //returns to the prompt
         prompt();
     }
@@ -194,12 +217,13 @@ void setpsw(){
         scanf("%s", pass);
 
 
-        printf("new password is: %s\n", pass);
+        printf("\nnew password is: %s\n", pass);
 
         //Confirmation
-        printf("Set this as your password? (1 = y/0 = n): ");
+        printf("\nSet this as your password? (1 = y/0 = n): ");
         scanf("%d", &ch);
-    }while(ch != 1);
+        printf("\n");
+    }while(ch != 1 && ch != 0);
 
     //Create a file
     FILE* file;
@@ -241,12 +265,13 @@ void setname(){
         printf("\nWhat's your name? ");
         scanf("%s", name);
 
-        printf("Your Name: %s\n", name);
+        printf("\nYour Name: %s\n", name);
 
-        printf("Set this as your name? (1 = y/0 = n): ");
+        printf("\nSet this as your name? (1 = y/0 = n): ");
         scanf("%d", &ch);
+        printf("\n");
 
-    }while(ch != 1);
+    }while(ch != 1 && ch != 0);
 
     FILE *file;
 
@@ -324,12 +349,34 @@ void reminder(){
 }
 
 
+
+void google(){
+    //use your prefered browser
+    system("brave https://google.com/");
+}
+
+
+void stackoverflow(){
+    //user your prefered browser
+    system("brave https://stackoverflow.com/");
+}
+
+
+void wikipedia(){
+    //user your preffered browser
+    system("brave https://wikipedia.com/");
+}
+
+
+
 //halts the program
 void stop(){
     exit(1);
 }
 
 
+
+//PROMPTS
 
 //Prompts the user for a command
 void prompt(){

@@ -8,3 +8,6 @@
 #define SETNAME "setname"
 #define STOP "stop"
 #define REMINDER "reminder"
+#define GOOGLE "g"
+#define STACKOVERFLOW "so"
+#define WIKIPEDIA "wiki"
