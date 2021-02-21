@@ -382,8 +382,48 @@ void setname(){
 
 
 void reminder(){
+    char *command = (char*)malloc(sizeof(char) * 15);
+    char *title = (char*)malloc(sizeof(char) * 25);
+    char *description = (char*)malloc(sizeof(char) * 50);
+
+    if(command == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+    if(title == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+    /*if(description == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }*/
+
+
 
     printf("\nNOTE: you have to keep the program running if you want the alarm to work\n");
+
+    printf("\nTitle of the alarm: ");
+    scanf("%s", title);
+
+    //Waste value so we can use fgets after scanf
+    //char c;
+    //c = getc(stdin);
+
+    sleep(1);
+
+    //printf("\nDescription: ");
+    //fgets(description, 50, stdin);
+
+    strcpy(command, "notify-send ");
+    strcat(title, " ");
+    //strcat(title, description);
+    strcat(command, title);
+
+    printf("\n%s\n", command);
+
 
     int h, m, s;
     //prompts the user for when the alarm should go off
@@ -399,7 +439,7 @@ void reminder(){
         int htos = h * 3600;//stands for hours to seconds
         sleep(htos);
 
-        system("notify-send alarm");
+        system(command);
     }
 
     printf("\nMinutes from now: ");
@@ -415,7 +455,7 @@ void reminder(){
         int mtos = m * 60;//stands for minutes to seconds
         sleep(mtos);
         
-        system("notify-send alarm");
+        system(command);
     }
 
     printf("\nSeconds from now: ");
@@ -429,9 +469,12 @@ void reminder(){
     else{
         sleep(s);
 
-        system("notify-send alarm");
+        system(command);
     }
 
+    free(command);
+    free(title);
+    free(description);
 
 }
 
