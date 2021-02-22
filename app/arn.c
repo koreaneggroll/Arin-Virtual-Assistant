@@ -54,7 +54,8 @@ void youtube();
 void classroom();
 void discord();
 void github();
-void stop();
+void notes();
+//void stop();
 
 
 
@@ -267,12 +268,23 @@ void evaluate(char *buffer){
     }
 
 
+
     else if(strcmp(buffer, GITHUB) == 0){
         //calls the command
         github();
         //returns to the prompt
         prompt();
     }
+
+
+
+    else if(strcmp(buffer, NOTES) == 0){
+        //calls the command
+        notes();
+        //returns to the prompt
+        prompt();
+    }
+
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -602,6 +614,11 @@ void github(){
 }
 
 
+//opens a note taking app
+//use your preffered note taking app
+void notes(){
+    system("simplenote");
+}
 
 
 //halts the program
@@ -643,6 +660,6 @@ void prompt(){
     }
 
     //frees some memory
-    free(buffer);
+    //free(buffer);
 
 }

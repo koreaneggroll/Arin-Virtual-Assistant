@@ -21,3 +21,4 @@
 #define SCHOOL "school"
 #define DISCORD "discord"
 #define GITHUB "github"
+#define NOTES "notes"
