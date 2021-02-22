@@ -55,6 +55,7 @@ void classroom();
 void discord();
 void github();
 void notes();
+void game();
 //void stop();
 
 
@@ -281,6 +282,15 @@ void evaluate(char *buffer){
     else if(strcmp(buffer, NOTES) == 0){
         //calls the command
         notes();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, GAME) == 0){
+        //calls the command
+        game();
         //returns to the prompt
         prompt();
     }
@@ -614,11 +624,23 @@ void github(){
 }
 
 
+
 //opens a note taking app
 //use your preffered note taking app
 void notes(){
     system("simplenote");
 }
+
+
+
+//opens up steam for your gaming purposes :)
+void game(){
+    terminal();
+    system("steam");
+    //prompt();
+}
+
+
 
 
 //halts the program

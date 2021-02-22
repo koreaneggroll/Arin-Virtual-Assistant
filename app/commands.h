@@ -22,3 +22,4 @@
 #define DISCORD "discord"
 #define GITHUB "github"
 #define NOTES "notes"
+#define GAME "game"
