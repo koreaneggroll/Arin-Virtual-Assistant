@@ -51,6 +51,7 @@ void todo();
 void skype();
 void music();
 void youtube();
+void classroom();
 void stop();
 
 
@@ -99,7 +100,7 @@ int main(void){
     }
 
     
-    
+    //welcome message
     printf("\n\nHello there %s, i'm your virtual assistant %s\n\n", user.name, Vir_ass.name);
 
     //clear();
@@ -253,6 +254,15 @@ void evaluate(char *buffer){
     }
 
 
+
+    else if(strcmp(buffer, SCHOOL) == 0){
+        //calls the command
+        classroom();
+        //returns to the prompt
+        prompt();
+    }
+
+
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
         printf("\nNo Instruction '%s'\n", buffer);
@@ -348,19 +358,24 @@ void setname(){
 
     int ch;
     do{
+        //prompt
         printf("\nWhat's your name? ");
         scanf("%s", name);
 
         printf("\nYour Name: %s\n", name);
 
+        //asks for confirmation
         printf("\nSet this as your name? (1 = y/0 = n): ");
         scanf("%d", &ch);
         printf("\n");
 
     }while(ch != 1 && ch != 0);
 
+
+    //create a file
     FILE *file;
 
+    //open file
     file = fopen("name.txt", "w");
 
 
@@ -381,6 +396,7 @@ void setname(){
 
 
 
+//sets an alarm
 void reminder(){
     char *command = (char*)malloc(sizeof(char) * 15);
     char *title = (char*)malloc(sizeof(char) * 25);
@@ -480,6 +496,7 @@ void reminder(){
 
 
 
+//opens google
 void google(){
     //use your prefered browser
     system("brave https://google.com/");
@@ -487,6 +504,7 @@ void google(){
 
 
 
+//opens stackoverflow
 void stackoverflow(){
     //use your prefered browser
     system("brave https://stackoverflow.com/");
@@ -494,6 +512,7 @@ void stackoverflow(){
 
 
 
+//opens wikipedia
 void wikipedia(){
     //use your preffered browser
     system("brave https://wikipedia.com/");
@@ -501,6 +520,7 @@ void wikipedia(){
 
 
 
+//opens a text editor
 void editor(){
     //use your preffered text editor 
     system("atom");
@@ -508,6 +528,7 @@ void editor(){
 
 
 
+//opens a terminal
 void terminal(){
     //use your preffered text editor
     system("yakuake");
@@ -515,6 +536,7 @@ void terminal(){
 
 
 
+//opens my todo app
 void todo(){
     //use your preffered to do app
     system("todo");
@@ -529,6 +551,7 @@ void skype(){
 
 
 
+//opens spotify
 void music(){
     //use your preffered streaming service
     system("spotify");
@@ -536,10 +559,19 @@ void music(){
 
 
 
+//opens youtube
 void youtube(){
     //use your preffered browser
     system("brave https://youtube.com");
 }
+
+
+//opens google classroom
+//open another platform if you use something else
+void classroom(){
+    system("brave https://classroom.google.com/u/2/h");
+}
+
 
 //halts the program
 void stop(){

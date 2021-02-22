@@ -18,3 +18,4 @@
 #define SKYPE "skype"
 #define MUSIC "music"
 #define CLEAR "clear"
+#define SCHOOL "school"
