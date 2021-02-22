@@ -246,14 +246,6 @@ void evaluate(char *buffer){
     }
 
 
-    else if(strcmp(buffer, STOP) == 0){
-        //calls the command
-        stop();
-        //returns to the prompt
-        prompt();
-    }
-
-
 
     else if(strcmp(buffer, SCHOOL) == 0){
         //calls the command
@@ -261,6 +253,7 @@ void evaluate(char *buffer){
         //returns to the prompt
         prompt();
     }
+
 
 
     //If it goes through all the if statements we know that there isn't a command with that name
@@ -574,9 +567,9 @@ void classroom(){
 
 
 //halts the program
-void stop(){
-    exit(1);
-}
+//void stop(){
+  //  exit(1);
+//}
 
 
 
@@ -600,6 +593,12 @@ void prompt(){
         printf("arn-virtual-assistant# ");
         //gets the input and stores it in buffer
         scanf("%s", buffer);
+
+        if(strcmp(buffer, STOP) == 0){
+            free(buffer);
+            exit(0);
+        }
+
         //Calls a function to evaluate what it should do based on the buffer
         evaluate(buffer);
     }
