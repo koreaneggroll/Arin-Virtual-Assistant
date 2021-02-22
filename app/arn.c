@@ -532,7 +532,10 @@ void reminder(){
 //opens google
 void google(){
     //use your prefered browser
+    //open the app
     system("brave https://google.com/");
+    //close the terminal
+    terminal();
 }
 
 
@@ -540,7 +543,10 @@ void google(){
 //opens stackoverflow
 void stackoverflow(){
     //use your prefered browser
+    //open app
     system("brave https://stackoverflow.com/");
+    //close the terminal
+    terminal();
 }
 
 
@@ -548,15 +554,21 @@ void stackoverflow(){
 //opens wikipedia
 void wikipedia(){
     //use your preffered browser
+    //open the app
     system("brave https://wikipedia.com/");
+    //close the terminal
+    terminal();
 }
 
 
 
 //opens a text editor
 void editor(){
-    //use your preffered text editor 
+    //use your preffered text editor
+    //open the app
     system("code");
+    //close the terminal
+    terminal();
 }
 
 
@@ -579,7 +591,10 @@ void todo(){
 
 //This function is for my use
 void skype(){
+    //open the app
     system("skype");
+    //close the terminal
+    terminal();
 }
 
 
@@ -587,7 +602,10 @@ void skype(){
 //opens spotify
 void music(){
     //use your preffered streaming service
+    //open the app
     system("spotify");
+    //close the terminal
+    terminal();
 }
 
 
@@ -595,7 +613,10 @@ void music(){
 //opens youtube
 void youtube(){
     //use your preffered browser
+    //opens the app
     system("brave https://youtube.com");
+    //close the terminal
+    terminal();
 }
 
 
@@ -603,14 +624,20 @@ void youtube(){
 //opens google classroom
 //open another platform if you use something else
 void classroom(){
+    //open the app
     system("brave https://classroom.google.com/u/2/h");
+    //close the terminal
+    terminal();
 }
 
 
 
 //opens up discord using the terminal
 void discord(){
+    //open the app
     system("discord");
+    //close the terminal
+    terminal();
 }
 
 
@@ -621,6 +648,8 @@ void github(){
     system("github");
     //you can change this to your own github page
     system("brave https://github.com/koreaneggroll");
+    //close the terminal
+    terminal();
 }
 
 
@@ -628,18 +657,29 @@ void github(){
 //opens a note taking app
 //use your preffered note taking app
 void notes(){
+    //open the app
     system("simplenote");
+    //closes the terminal
+    terminal();
 }
 
 
 
 //opens up steam for your gaming purposes :)
 void game(){
-    terminal();
+    //open the app
     system("steam");
+    //close the terminal
+    terminal();
     //prompt();
 }
 
+
+//opens up a drawing app for your programming needs
+void paint(){
+    system("pinta");
+    terminal();
+}
 
 
 
