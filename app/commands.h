@@ -19,3 +19,5 @@
 #define MUSIC "music"
 #define CLEAR "clear"
 #define SCHOOL "school"
+#define DISCORD "discord"
+#define GITHUB "github"

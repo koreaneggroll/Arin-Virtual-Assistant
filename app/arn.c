@@ -52,6 +52,8 @@ void skype();
 void music();
 void youtube();
 void classroom();
+void discord();
+void github();
 void stop();
 
 
@@ -98,6 +100,7 @@ int main(void){
         //closes the file
         fclose(fp);
     }
+
 
     
     //welcome message
@@ -255,6 +258,21 @@ void evaluate(char *buffer){
     }
 
 
+
+    else if(strcmp(buffer, DISCORD) == 0){
+        //calls the command
+        discord();
+        //returns to the prompt
+        prompt();
+    }
+
+
+    else if(strcmp(buffer, GITHUB) == 0){
+        //calls the command
+        github();
+        //returns to the prompt
+        prompt();
+    }
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -516,7 +534,7 @@ void wikipedia(){
 //opens a text editor
 void editor(){
     //use your preffered text editor 
-    system("atom");
+    system("code");
 }
 
 
@@ -559,11 +577,31 @@ void youtube(){
 }
 
 
+
 //opens google classroom
 //open another platform if you use something else
 void classroom(){
     system("brave https://classroom.google.com/u/2/h");
 }
+
+
+
+//opens up discord using the terminal
+void discord(){
+    system("discord");
+}
+
+
+
+//opens up github desktop and my profile in my browser
+void github(){
+    //this only works if you got github desktop
+    system("github");
+    //you can change this to your own github page
+    system("brave https://github.com/koreaneggroll");
+}
+
+
 
 
 //halts the program
@@ -594,6 +632,7 @@ void prompt(){
         //gets the input and stores it in buffer
         scanf("%s", buffer);
 
+        //gets rid of some unused memory
         if(strcmp(buffer, STOP) == 0){
             free(buffer);
             exit(0);
