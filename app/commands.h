@@ -1,3 +1,4 @@
+
 //DEFINES
 #define true 1
 #define false 0
@@ -8,7 +9,7 @@
 #define SETNAME "setname"
 #define STOP "stop"
 #define REMINDER "reminder"
-#define GOOGLE "g"
+#define GOOGLE "google"
 #define YOUTUBE "yt"
 #define STACKOVERFLOW "so"
 #define WIKIPEDIA "wiki"
@@ -23,3 +24,5 @@
 #define GITHUB "github"
 #define NOTES "notes"
 #define GAME "game"
+#define PAINT "paint"
+

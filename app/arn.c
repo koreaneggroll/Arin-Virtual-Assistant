@@ -298,7 +298,7 @@ void evaluate(char *buffer){
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
-        printf("\nNo Instruction '%s'\n", buffer);
+        printf("\nI'm sorry but I don't have a function called:  '%s'\n", buffer);
     }
 }
 
@@ -323,6 +323,7 @@ void seetime(){
 //Responds with 'hello + username'
 void hello(){
     printf("\nHello %s\n", user.name);
+    printf("\n");
 }
 
 
@@ -433,7 +434,7 @@ void setname(){
 void reminder(){
     char *command = (char*)malloc(sizeof(char) * 15);
     char *title = (char*)malloc(sizeof(char) * 25);
-    char *description = (char*)malloc(sizeof(char) * 50);
+    //char *description = (char*)malloc(sizeof(char) * 50);
 
     if(command == NULL){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
@@ -523,7 +524,7 @@ void reminder(){
 
     free(command);
     free(title);
-    free(description);
+    //free(description);
 
 }
 
@@ -531,9 +532,51 @@ void reminder(){
 
 //opens google
 void google(){
+
+    //waste variable so we can use fgets
+    char c;
+    c = getc(stdin);
+
+
+    //initalization of command
+    char *command = (char*)malloc(sizeof(char) * 300);
+    //change the number of bytes based on the name of the browser
+    char *search = (char*)malloc(sizeof(char) * 258); //its 258 because the command 'brave https:/google.com/?q= is 42 characters
+
+    //error checking
+    if(command == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+    //error checking
+    if(search == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+    printf("\n\n\nWait a Second\n\n\n");
+
+    sleep(1);
+
+    printf("\n\n\nGoogle Search: ");
+
+    fgets(search, 258, stdin);
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '+';
+        }
+    }
+
+    strcpy(command, "brave https://google.com/?q=");
+    strcat(command, search);
+
+
     //use your prefered browser
     //open the app
-    system("brave https://google.com/");
+    system(command);
     //close the terminal
     terminal();
 }
@@ -673,6 +716,7 @@ void game(){
     terminal();
     //prompt();
 }
+
 
 
 //opens up a drawing app for your programming needs
