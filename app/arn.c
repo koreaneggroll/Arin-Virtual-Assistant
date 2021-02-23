@@ -570,6 +570,8 @@ void google(){
     //gets the input
     fgets(search, 258, stdin);
 
+    clock_t begin = clock();
+
     //loops through the string and where there's a space change it to a '+'
     for(int i = 0; i < strlen(search); i++){
         if(search[i] == ' '){
@@ -586,6 +588,11 @@ void google(){
     //use your prefered browser
     //open the app
     system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 
@@ -626,10 +633,14 @@ void stackoverflow(){
 
     sleep(1);
 
-    printf("\n\nPlease put 3 spaces in between each word so it can actually work\n\n");
+
+    //printf("\n\nPlease put 3 spaces in between each word so it can actually work\n\n");
+
 
     printf("Stackoverflow: ");
     fgets(search, 300, stdin);
+
+    clock_t begin = clock();
 
 
     for(int i = 0; i < strlen(search); i++){
@@ -648,6 +659,11 @@ void stackoverflow(){
     //use your prefered browser
     //open app
     system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 
@@ -692,6 +708,8 @@ void wikipedia(){
     printf("Wiki search: ");
     fgets(search, 272, stdin);
 
+    clock_t begin = clock();
+
 
     for(int i = 0; i < strlen(search); i++){
         if(search[i] == ' '){
@@ -706,6 +724,11 @@ void wikipedia(){
     //use your preffered browser
     //open the app
     system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 
@@ -718,9 +741,17 @@ void wikipedia(){
 
 //opens a text editor
 void editor(){
+
+    clock_t begin = clock();
+
     //use your preffered text editor
     //open the app
     system("code");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 }
@@ -729,8 +760,15 @@ void editor(){
 
 //opens a terminal
 void terminal(){
+
+    clock_t begin = clock();
+
     //use your preffered text editor
     system("yakuake");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
 }
 
 
@@ -745,8 +783,16 @@ void todo(){
 
 //This function is for my use
 void skype(){
+
+    clock_t begin = clock();
+
     //open the app
     system("skype");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n");
+
     //close the terminal
     terminal();
 }
@@ -755,9 +801,17 @@ void skype(){
 
 //opens spotify
 void music(){
+
+    clokc_t begin = clock();
+
     //use your preffered streaming service
     //open the app
     system("spotify");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n");
+
     //close the terminal
     terminal();
 }
@@ -798,6 +852,8 @@ void youtube(){
     printf("\n\nYouTube Search: ");
     fgets(search, 243, stdin);
 
+    clock_t begin = clock();
+
 
     for(int i = 0; i < strlen(search); i++){
         if(search[i] == ' '){
@@ -814,6 +870,11 @@ void youtube(){
     //use your preffered browser
     //opens the app
     system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 
@@ -828,7 +889,13 @@ void youtube(){
 //open another platform if you use something else
 void classroom(){
     //open the app
+    clock_t begin = clock();
     system("brave https://classroom.google.com/u/2/h");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 }
@@ -838,7 +905,13 @@ void classroom(){
 //opens up discord using the terminal
 void discord(){
     //open the app
+    clock_t begin = clock();
     system("discord");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 }
@@ -847,10 +920,18 @@ void discord(){
 
 //opens up github desktop and my profile in my browser
 void github(){
+
+    clock_t begin = clock();
+
     //this only works if you got github desktop
     system("github");
     //you can change this to your own github page
     system("brave https://github.com/koreaneggroll");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
 }
@@ -860,8 +941,16 @@ void github(){
 //opens a note taking app
 //use your preffered note taking app
 void notes(){
+
+    clock_t begin = clock();
+
     //open the app
     system("simplenote");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //closes the terminal
     terminal();
 }
@@ -870,8 +959,16 @@ void notes(){
 
 //opens up steam for your gaming purposes :)
 void game(){
+
+    clock_t begin = clock();
+
     //open the app
     system("steam");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
     //close the terminal
     terminal();
     //prompt();
@@ -881,7 +978,17 @@ void game(){
 
 //opens up a drawing app for your programming needs
 void paint(){
+
+    clock_t begin = clock();
+
+    //open the app
     system("pinta");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
     terminal();
 }
 
