@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
-#include <signal.h>
+//#include <signal.h>
 #include "commands.h"
 
 
@@ -60,6 +60,9 @@ void discord();
 void github();
 void notes();
 void game();
+void math();
+void writer();
+void impress();
 //void stop();
 
 
@@ -299,6 +302,30 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+    else if(strcmp(buffer, MATH) == 0){
+        //calls the command
+        math();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, WRITER) == 0){
+        //calls the command
+        writer();
+        //returns to the prompt
+        prompt();
+    }
+
+
+    else if(strcmp(buffer, IMPRESS) == 0){
+        //calls the command
+        impress();
+        //returns to the prompt
+        prompt();
+    }
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -993,6 +1020,58 @@ void paint(){
 }
 
 
+
+//opens libreoffice math
+void math(){
+    
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --math");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
+    terminal();
+}
+
+
+
+//opens up libreoffice writer
+void writer(){
+    
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --writer");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
+    terminal();
+}
+
+
+
+//opens up libreoffice impress
+void impress(){
+
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --impress");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
+    terminal();
+}
 
 //halts the program
 //void stop(){
