@@ -17,7 +17,9 @@ typedef struct{
     char password[25];
 
 }User;
+
 typedef User usr;
+
 
 usr user;
 
@@ -27,7 +29,9 @@ typedef struct{
     char name[25];
 
 }Virtual_Assistant;
+
 typedef Virtual_Assistant vs;
+
 
 vs Vir_ass = {"Arn"};
 
@@ -646,6 +650,10 @@ void stackoverflow(){
     system(command);
     //close the terminal
     terminal();
+
+    //frees some memory
+    free(command);
+    free(search);
 }
 
 
