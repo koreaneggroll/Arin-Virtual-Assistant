@@ -541,7 +541,7 @@ void google(){
     //initalization of command
     char *command = (char*)malloc(sizeof(char) * 300);
     //change the number of bytes based on the name of the browser
-    char *search = (char*)malloc(sizeof(char) * 258); //its 258 because the command 'brave https:/google.com/?q= is 42 characters
+    char *search = (char*)malloc(sizeof(char) * 300);
 
 
     //error checking
@@ -594,12 +594,60 @@ void google(){
 
 //opens stackoverflow
 void stackoverflow(){
+
+    //waste variable so we can use fgets
+    char c;
+    c = getc(stdin);
+
+    char *command = (char*)malloc(sizeof(char) * 300);
+    char *search = (char*)malloc(sizeof(char) * 300);
+
+
+    //error checking
+    if(command == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+    //error checking
+    if(search == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+
+    printf("\n\nWait a second\n\n");
+
+    sleep(1);
+
+    printf("\n\nPlease put 3 spaces in between each word so it can actually work\n\n");
+
+    printf("Stackoverflow: ");
+    fgets(search, 300, stdin);
+
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '+';
+        }
+    }
+
+    printf("%s\n", search);
+
+
+    strcpy(command, "brave https://stackoverflow.com/search?q=");
+    strcat(command, search);
+
+
     //use your prefered browser
     //open app
-    system("brave https://stackoverflow.com/");
+    system(command);
     //close the terminal
     terminal();
 }
+
 
 
 
@@ -717,7 +765,7 @@ void youtube(){
 
     //Initialization
     char *command = (char*)malloc(sizeof(char) * 300);
-    char *search = (char*)malloc(sizeof(char) * 243);
+    char *search = (char*)malloc(sizeof(char) * 300);
     
 
     //error checking
