@@ -584,6 +584,10 @@ void google(){
     system(command);
     //close the terminal
     terminal();
+
+    //frees some memory
+    free(command);
+    free(search);
 }
 
 
@@ -601,11 +605,57 @@ void stackoverflow(){
 
 //opens wikipedia
 void wikipedia(){
+
+    //waste variable so we can use fgets
+    char c;
+    c = getc(stdin);
+
+    //initialization
+    char *command = (char*)malloc(sizeof(char) * 300);
+    char *search = (char*)malloc(sizeof(char) * 272);
+
+
+    //error checking
+    if(command == NULL){
+        printf("\n\n\nERR: Coudln't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+    //error checking
+    if(search == NULL){
+        printf("\n\n\nERR: Coudln't allocate memory\n\n\n");
+        exit(1);
+    }
+
+    
+    printf("\n\nWait a second\n\n");
+
+    sleep(1);
+
+    printf("Wiki search: ");
+    fgets(search, 272, stdin);
+
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '_';
+        }
+    }
+
+
+    strcpy(command, "brave https://en.wikipedia.org/wiki/");
+    strcat(command, search);
+
     //use your preffered browser
     //open the app
-    system("brave https://wikipedia.com/");
+    system(command);
     //close the terminal
     terminal();
+
+    //frees some memory
+    free(command);
+    free(search);
 }
 
 
@@ -710,6 +760,10 @@ void youtube(){
     system(command);
     //close the terminal
     terminal();
+
+    //frees some memory
+    free(command);
+    free(search);
 }
 
 
