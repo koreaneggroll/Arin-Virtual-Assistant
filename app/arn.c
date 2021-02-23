@@ -791,7 +791,7 @@ void skype(){
 
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("\n\nIt took %f sec\n\n");
+    printf("\n\nIt took %f sec\n\n", time_spent);
 
     //close the terminal
     terminal();
@@ -802,7 +802,7 @@ void skype(){
 //opens spotify
 void music(){
 
-    clokc_t begin = clock();
+    clock_t begin = clock();
 
     //use your preffered streaming service
     //open the app
@@ -810,7 +810,7 @@ void music(){
 
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("\n\nIt took %f sec\n\n");
+    printf("\n\nIt took %f sec\n\n", time_spent);
 
     //close the terminal
     terminal();
