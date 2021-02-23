@@ -486,8 +486,8 @@ void reminder(){
     }
     //Starts alarm if everything went well
     else{
-        int htos = h * 3600;//stands for hours to seconds
-        sleep(htos);
+        //int htos = h * 3600;//stands for hours to seconds
+        sleep(h);
 
         system(command);
     }
@@ -502,8 +502,8 @@ void reminder(){
     }
     //Starts alarm if everything went well
     else{
-        int mtos = m * 60;//stands for minutes to seconds
-        sleep(mtos);
+        //int mtos = m * 60;//stands for minutes to seconds
+        sleep(m);
         
         system(command);
     }
@@ -543,6 +543,7 @@ void google(){
     //change the number of bytes based on the name of the browser
     char *search = (char*)malloc(sizeof(char) * 258); //its 258 because the command 'brave https:/google.com/?q= is 42 characters
 
+
     //error checking
     if(command == NULL){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
@@ -556,21 +557,25 @@ void google(){
         exit(1);
     }
 
+    //alerts the user to wait a sec
     printf("\n\n\nWait a Second\n\n\n");
-
+    //sleeps for 1 sec
     sleep(1);
-
+    //prompts the user to google something
     printf("\n\n\nGoogle Search: ");
-
+    //gets the input
     fgets(search, 258, stdin);
 
+    //loops through the string and where there's a space change it to a '+'
     for(int i = 0; i < strlen(search); i++){
         if(search[i] == ' '){
             search[i] = '+';
         }
     }
 
+    //set the command to open up google
     strcpy(command, "brave https://google.com/?q=");
+    //concatonate the link with the new search result
     strcat(command, search);
 
 
@@ -655,9 +660,54 @@ void music(){
 
 //opens youtube
 void youtube(){
+
+    //waste variable for us to be able to use fgets
+    char c;
+    c = getc(stdin);
+
+    //Initialization
+    char *command = (char*)malloc(sizeof(char) * 300);
+    char *search = (char*)malloc(sizeof(char) * 243);
+    
+
+    //error checking
+    if(command == NULL){
+        printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+    //error checking
+    if(search == NULL){
+        printf("\n\n\nCouldn't allocate memory\n\n\n");
+        exit(1);
+    }
+
+
+    printf("\n\nWait a second\n\n");
+
+    sleep(1);
+
+
+    printf("\n\nYouTube Search: ");
+    fgets(search, 243, stdin);
+
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '+';
+        }
+    }
+
+
+    strcpy(command, "brave https://www.youtube.com/results?search_query=");
+    strcat(command, search);
+
+
+
     //use your preffered browser
     //opens the app
-    system("brave https://youtube.com");
+    system(command);
     //close the terminal
     terminal();
 }
