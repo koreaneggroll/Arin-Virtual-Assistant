@@ -96,19 +96,23 @@ int main(void){
     
     //READS FROM THE FILES TO SET THE NAME OF THE USER
     FILE *fp;
+
     //Opens the file
     fp = fopen("name.txt", "rb");
+
     //Error handling
     if(fp == NULL){
         //Gives a warning
         printf("\n\n\nWARNING: No name set\n\n\n");
     }
+
     //If the file exists it reads it and stores the data in user.name
     else{
         fseek(fp, SEEK_END, 0);
         ftell(fp);
         rewind(fp);
         fread(user.name, 25, 1, fp);
+
         //closes the file
         fclose(fp);
     }
@@ -116,7 +120,7 @@ int main(void){
 
     
     //welcome message
-    printf("\n\nHello there %s, i'm your virtual assistant %s\n\n", user.name, Vir_ass.name);
+    printf("\n\nHello there %s, I'm your virtual assistant %s\n\n", user.name, Vir_ass.name);
 
     //clear();
     prompt();
@@ -126,12 +130,14 @@ int main(void){
 
 void evaluate(char *buffer){
 
+
     if(strcmp(buffer, TIME) == 0){
         //calls the command
         seetime();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -144,6 +150,7 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, SETPSW) == 0){
         //calls the command
         setpsw();
@@ -153,12 +160,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, SETNAME) == 0){
         //calls the command
         setname();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -172,12 +181,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, GOOGLE) == 0){
         //calls the command
         google();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -190,12 +201,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, WIKIPEDIA) == 0){
         //calls the command
         wikipedia();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -208,12 +221,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, TERMINAL) == 0){
         //calls the command
         terminal();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -226,12 +241,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, SKYPE) == 0){
         //calls the command
         skype();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -244,12 +261,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, YOUTUBE) == 0){
         //calls the command
         youtube();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -262,12 +281,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, SCHOOL) == 0){
         //calls the command
         classroom();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -280,12 +301,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, GITHUB) == 0){
         //calls the command
         github();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -298,6 +321,7 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, GAME) == 0){
         //calls the command
         game();
@@ -306,12 +330,15 @@ void evaluate(char *buffer){
     }
 
 
+
+
     else if(strcmp(buffer, MATH) == 0){
         //calls the command
         math();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -324,12 +351,14 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, IMPRESS) == 0){
         //calls the command
         impress();
         //returns to the prompt
         prompt();
     }
+
 
 
 
@@ -342,6 +371,7 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, STARTUP) == 0){
         //calls the command
         startup();
@@ -351,12 +381,16 @@ void evaluate(char *buffer){
 
 
 
+
     else if(strcmp(buffer, ULAUNCHER) == 0){
         //calls the command
         ulauncher();
         //returns to the prompt
         prompt();
     }
+
+
+
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -383,11 +417,13 @@ void seetime(){
 
 
 
+
 //Responds with 'hello + username'
 void hello(){
     printf("\nHello %s\n", user.name);
     printf("\n");
 }
+
 
 
 
@@ -442,6 +478,7 @@ void setpsw(){
 
 
 
+
 //Sets the name for the user
 void setname(){
     char* name = (char*)malloc(sizeof(char) * 25);
@@ -490,6 +527,7 @@ void setname(){
     free(name);
 
 }
+
 
 
 
@@ -593,6 +631,7 @@ void reminder(){
 
 
 
+
 //opens google
 void google(){
 
@@ -659,6 +698,7 @@ void google(){
     free(command);
     free(search);
 }
+
 
 
 
@@ -734,6 +774,7 @@ void stackoverflow(){
 
 
 
+
 //opens wikipedia
 void wikipedia(){
 
@@ -798,6 +839,7 @@ void wikipedia(){
 
 
 
+
 //opens a text editor
 void editor(){
 
@@ -817,6 +859,7 @@ void editor(){
 
 
 
+
 //opens a terminal
 void terminal(){
 
@@ -833,11 +876,13 @@ void terminal(){
 
 
 
+
 //opens my todo app
 void todo(){
     //use your preffered to do app
     system("todo");
 }
+
 
 
 
@@ -859,6 +904,7 @@ void skype(){
 
 
 
+
 //opens spotify
 void music(){
 
@@ -875,6 +921,7 @@ void music(){
     //close the terminal
     terminal();
 }
+
 
 
 
@@ -945,6 +992,7 @@ void youtube(){
 
 
 
+
 //opens google classroom
 //open another platform if you use something else
 void classroom(){
@@ -962,6 +1010,7 @@ void classroom(){
 
 
 
+
 //opens up discord using the terminal
 void discord(){
     //open the app
@@ -975,6 +1024,7 @@ void discord(){
     //close the terminal
     terminal();
 }
+
 
 
 
@@ -998,6 +1048,7 @@ void github(){
 
 
 
+
 //opens a note taking app
 //use your preffered note taking app
 void notes(){
@@ -1014,6 +1065,7 @@ void notes(){
     //closes the terminal
     terminal();
 }
+
 
 
 
@@ -1036,6 +1088,7 @@ void game(){
 
 
 
+
 //opens up a drawing app for your programming needs
 void paint(){
 
@@ -1051,6 +1104,7 @@ void paint(){
     //close the terminal
     terminal();
 }
+
 
 
 
@@ -1142,6 +1196,7 @@ void startup(){
 
     /*
         Here i'm trying to only call the 'school' function only on schooldays
+        but idk how :|
     */
     
     
@@ -1180,6 +1235,8 @@ void ulauncher(){
 
 
 //PROMPTS
+
+
 
 //Prompts the user for a command
 void prompt(){
