@@ -6,6 +6,7 @@
 #include <time.h>
 //#include <signal.h>
 #include "commands.h"
+#include <stdbool.h>
 
 
 
@@ -78,7 +79,7 @@ int main(void){
     //opens the file
     file = fopen("pass.txt", "rb");
     //Error handling
-    if(file == NULL){
+    if(!file){
         printf("\n\n\nWARNING: No password set\n\n\n");
     }
     //if the file exists it reads it and stores the data in user.password
@@ -101,7 +102,7 @@ int main(void){
     fp = fopen("name.txt", "rb");
 
     //Error handling
-    if(fp == NULL){
+    if(!fp){
         //Gives a warning
         printf("\n\n\nWARNING: No name set\n\n\n");
     }
@@ -429,11 +430,17 @@ void hello(){
 
 //Sets the password for the user
 void setpsw(){
+
+    //waste variable so we can use fgets
+    char c;
+    c = getc(stdin);
+
+
     char* pass = (char*)malloc(sizeof(char) * 25);
 
 
     //Error handling
-    if(pass == NULL){
+    if(!pass){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
     }
 
@@ -443,10 +450,17 @@ void setpsw(){
         //prompt
         printf("\nNew Password: ");
         //get input
-        scanf("%s", pass);
+        fgets(pass, 25, stdin);
 
 
-        printf("\nnew password is: %s\n", pass);
+        //error checking
+        if(is_space(pass)){
+            printf("\n\nI'm sorry but your password cannot contain spaces. Please try again\n\n");
+            prompt();
+        }
+
+
+        printf("\nNew password is: %s\n", pass);
 
         //Confirmation
         printf("\nSet this as your password? (1 = y/0 = n): ");
@@ -461,7 +475,7 @@ void setpsw(){
 
 
     //Error handling
-    if(file == NULL){
+    if(!file){
         printf("\n\n\nERR: Couldn't open file\n\n\n");
         exit(1);
     }
@@ -481,11 +495,17 @@ void setpsw(){
 
 //Sets the name for the user
 void setname(){
+
+    //waste variable so we can use fgets
+    char c;
+    c = getc(stdin);
+
+
     char* name = (char*)malloc(sizeof(char) * 25);
 
 
     //Error handling
-    if(name == NULL){
+    if(!name){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
@@ -494,7 +514,12 @@ void setname(){
     do{
         //prompt
         printf("\nWhat's your name? ");
-        scanf("%s", name);
+        fgets(name, 25, stdin);
+
+        if(is_space(name)){
+            printf("\n\nI'm sorry but your name cannot contain spaces. Please try again\n\n");
+            prompt();
+        }
 
         printf("\nYour Name: %s\n", name);
 
@@ -537,12 +562,12 @@ void reminder(){
     char *title = (char*)malloc(sizeof(char) * 25);
     //char *description = (char*)malloc(sizeof(char) * 50);
 
-    if(command == NULL){
+    if(!command){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
 
-    if(title == NULL){
+    if(!title){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
@@ -647,14 +672,14 @@ void google(){
 
 
     //error checking
-    if(command == NULL){
+    if(!command){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
 
 
     //error checking
-    if(search == NULL){
+    if(!search){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
@@ -714,14 +739,14 @@ void stackoverflow(){
 
 
     //error checking
-    if(command == NULL){
+    if(!command){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
 
 
     //error checking
-    if(search == NULL){
+    if(!search){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
@@ -788,14 +813,14 @@ void wikipedia(){
 
 
     //error checking
-    if(command == NULL){
+    if(!command){
         printf("\n\n\nERR: Coudln't allocate memory\n\n\n");
         exit(1);
     }
 
 
     //error checking
-    if(search == NULL){
+    if(!search){
         printf("\n\n\nERR: Coudln't allocate memory\n\n\n");
         exit(1);
     }
@@ -938,14 +963,14 @@ void youtube(){
     
 
     //error checking
-    if(command == NULL){
+    if(!command){
         printf("\n\n\nERR: Couldn't allocate memory\n\n\n");
         exit(1);
     }
 
 
     //error checking
-    if(search == NULL){
+    if(!search){
         printf("\n\n\nCouldn't allocate memory\n\n\n");
         exit(1);
     }
@@ -1244,7 +1269,7 @@ void prompt(){
     char *buffer = (char*)malloc(sizeof(char) * 25);
 
     //Error handling
-    if(buffer == NULL){
+    if(!buffer){
         printf("\n\n\nERR: Couldn't allocate memory to 'buffer'\n\n\n");
         exit(1);
     }

@@ -1,7 +1,15 @@
+//INCLUDES
+#include <stdbool.h>
+#include <string.h>
+
+
+//FUNCTIONS
+bool is_space(char *str);
+
 
 //DEFINES
-#define true 1
-#define false 0
+//#define true 1    we no longer need this since we included stdbool
+//#define false 0   we no longer need this since we included stdbool
 #define clear() printf("\e[1;1H\e[2J");
 #define TIME "time" //tells the current time
 #define HELLO "hello" //responds with 'hello + name'
