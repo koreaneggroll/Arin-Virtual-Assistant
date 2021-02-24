@@ -24,6 +24,12 @@ INSTRUCTIONS{
   * notes = opens your preffered notes app
   * game = opens steam.
   * paint = opens your preffered paiting app.
+  * math = opens libreoffice math.
+  * writer = opens libreoffice writer.
+  * impress = opens libreoffice impress.
+  * wp = opens whatsapp.
+  * ulauncher = opens ulauncher.
+  * startup = opens everything I need on a daily basis.
   * stop = halts the program.
 }
 
