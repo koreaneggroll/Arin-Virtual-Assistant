@@ -63,6 +63,9 @@ void game();
 void math();
 void writer();
 void impress();
+void whatsapp();
+void startup();
+void ulauncher();
 //void stop();
 
 
@@ -320,6 +323,7 @@ void evaluate(char *buffer){
     }
 
 
+
     else if(strcmp(buffer, IMPRESS) == 0){
         //calls the command
         impress();
@@ -327,9 +331,37 @@ void evaluate(char *buffer){
         prompt();
     }
 
+
+
+    else if(strcmp(buffer, WHATSAPP) == 0){
+        //calls the command
+        whatsapp();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, STARTUP) == 0){
+        //calls the command
+        startup();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(strcmp(buffer, ULAUNCHER) == 0){
+        //calls the command
+        ulauncher();
+        //returns to the prompt
+        prompt();
+    }
+
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
         printf("\nI'm sorry but I don't have a function called:  '%s'\n", buffer);
+        printf("\n");
     }
 }
 
@@ -788,14 +820,15 @@ void editor(){
 //opens a terminal
 void terminal(){
 
-    clock_t begin = clock();
+    //clock_t begin = clock();
 
     //use your preffered text editor
     system("yakuake");
 
-    clock_t end = clock();
+    /*clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
     printf("\n\nIt took %f sec\n\n", time_spent);
+    */
 }
 
 
@@ -1072,6 +1105,72 @@ void impress(){
     //close the terminal
     terminal();
 }
+
+
+
+//opens whatsapp
+void whatsapp(){
+    
+    clock_t begin = clock();
+
+    //open the app
+    system("brave https://web.whatsapp.com/");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
+    terminal();
+}
+
+
+
+//opens everything I need
+void startup(){
+
+    clock_t begin = clock();
+
+    //open the apps
+    ulauncher();
+    whatsapp();
+    editor();
+    github();
+    music();
+    youtube();
+
+
+    /*
+        Here i'm trying to only call the 'school' function only on schooldays
+    */
+    
+    
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+}
+
+
+
+//opens ulauncher
+void ulauncher(){
+
+    clock_t begin = clock();
+
+    //open app
+    system("ulauncher");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("It took %f sec\n\n", time_spent);
+
+    //closes the terminal
+    terminal();
+}
+
+
+
 
 //halts the program
 //void stop(){

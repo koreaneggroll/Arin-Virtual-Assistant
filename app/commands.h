@@ -28,3 +28,6 @@
 #define MATH "math" //opens up libreoffice math
 #define WRITER "writer" //opens up libreoffice writer
 #define IMPRESS "impress" //opens up libreoffice impress
+#define WHATSAPP "wp" //opens whatsapp
+#define STARTUP "startup" //opens everything I need on the system
+#define ULAUNCHER "ulauncher" //opens ulauncher
