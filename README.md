@@ -34,5 +34,3 @@ INSTRUCTIONS{
 }
 
 
-
-All copyrights reserved. For now.
