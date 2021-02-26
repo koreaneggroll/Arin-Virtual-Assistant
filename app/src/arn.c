@@ -5,7 +5,7 @@
 #include <string.h>
 #include <time.h>
 //#include <signal.h>
-#include "commands.h"
+#include "../includes/commands.h"
 #include <stdbool.h>
 
 
@@ -67,6 +67,8 @@ void impress();
 void whatsapp();
 void startup();
 void ulauncher();
+void temperature();
+void day();
 //void stop();
 
 
@@ -77,7 +79,7 @@ int main(void){
     //READS FROM THE FILES TO SET THE PASSWORD OF THE USER
     FILE *file;
     //opens the file
-    file = fopen("pass.txt", "rb");
+    file = fopen("./bin/pass.txt", "rb");
     //Error handling
     if(!file){
         printf("\n\n\nWARNING: No password set\n\n\n");
@@ -99,7 +101,7 @@ int main(void){
     FILE *fp;
 
     //Opens the file
-    fp = fopen("name.txt", "rb");
+    fp = fopen("./bin/name.txt", "rb");
 
     //Error handling
     if(!fp){
@@ -392,6 +394,26 @@ void evaluate(char *buffer){
 
 
 
+
+    else if(strcmp(buffer, TEMPERATURE) == 0){
+        //calls the command
+        temperature();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+
+    else if(strcmp(buffer, DAY) == 0){
+        //calls the command
+        day();
+        //returns to the prompt
+        prompt();
+    }
+
+
+    
 
     //If it goes through all the if statements we know that there isn't a command with that name
     else{
@@ -1243,9 +1265,47 @@ void ulauncher(){
 
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("It took %f sec\n\n", time_spent);
+    printf("\n\nIt took %f sec\n\n", time_spent);
 
     //closes the terminal
+    terminal();
+}
+
+
+
+
+void temperature(){
+    clock_t begin = clock();
+
+
+    //google whats the temperature
+    system("brave https://www.google.com/search?q=whats+the+temperature+outside&oq=whats+the+temperature+outside&aqs=chrome..69i57.6492j0j1&sourceid=chrome&ie=UTF-8");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+
+    //close the temperature
+    terminal();
+}
+
+
+
+
+void day(){
+    clock_t begin = clock();
+
+
+    //google what day is it
+    system("brave https://www.google.com/search?q=what+day+is+it+%3F&oq=what+day+is+it+%3F+&aqs=chrome..69i57j69i60.2066j0j1&sourceid=chrome&ie=UTF-8");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+
+    //close the terminal
     terminal();
 }
 

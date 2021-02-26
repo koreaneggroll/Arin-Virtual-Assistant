@@ -39,3 +39,5 @@ bool is_space(char *str);
 #define WHATSAPP "wp" //opens whatsapp
 #define STARTUP "startup" //opens everything I need on the system
 #define ULAUNCHER "ulauncher" //opens ulauncher
+#define TEMPERATURE "temperature" //opens a browser telling you what temperature it is outside
+#define DAY "day" //opens a browser telling you what day it is
