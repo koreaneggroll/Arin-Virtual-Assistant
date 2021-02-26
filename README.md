@@ -30,6 +30,8 @@ INSTRUCTIONS{
   * wp = opens whatsapp.
   * ulauncher = opens ulauncher.
   * startup = opens everything I need on a daily basis.
+  * temperature = tells you what is the temperature outside.
+  * day = tells you what day of the week it is.
   * stop = halts the program.
 }
 
