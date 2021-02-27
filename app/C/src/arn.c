@@ -1343,7 +1343,7 @@ void prompt(){
         scanf("%s", buffer);
 
         //gets rid of some unused memory
-        if(strcmp(buffer, STOP) == 0){
+        if(strcmp(buffer, EXIT) == 0){
             free(buffer);
             exit(0);
         }
