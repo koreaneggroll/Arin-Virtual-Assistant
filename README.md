@@ -2,7 +2,7 @@
  Trying to implement my own virtual assistant for my linux system using C
 
 
-INSTRUCTIONS{
+C INSTRUCTIONS{
   * time = prints out the current time.
   * hello = responds with hello + name.
   * setpsw = set the password for your assistant(of use later in this project).
@@ -35,3 +35,7 @@ INSTRUCTIONS{
   * stop = halts the program.
 }
 
+
+C++ INSTRUCTIONS{
+ * instructions coming soon
+}
