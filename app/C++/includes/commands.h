@@ -3,7 +3,7 @@
 
 
 //FUNCTIONS
-bool is_space(std::string);
+bool is_space(std::string str);
 
 
 //DEFINES
