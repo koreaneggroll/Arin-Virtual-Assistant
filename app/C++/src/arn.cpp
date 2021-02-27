@@ -2,6 +2,7 @@
 #include <iostream>
 #include <time.h>
 #include "../includes/commands.h"
+#include <fstream>
 
 
 using namespace std;
@@ -32,11 +33,25 @@ class Virtual_Assistant{
         string name;
         usr customer;
     public:
+        //setters
+        void setName(string nm);
+        void setCustomer(string nm, string pass);
+        
+        //getters
+        string getName();
+        string getCustomer();
+
         //evaluate function
         void evaluate(string buffer);
+
         //actual functions
         void hello();
         void seetime();
+        void setpsw();
+        void setname();
+        void reminder();
+        void google();
+        void youtube();
         friend void prompt();
 
 };
@@ -45,21 +60,28 @@ typedef Virtual_Assistant vs;
 vs Vir_ass;
 
 
+//DATA END
 
 
-//FUNCTION PROTOTYPES
+
+//FUNCTION PROTOTYPES START
 void prompt();
-
+//FUNCTION PROTOTYPES END
 
 
 
 int main(void){
+    Vir_ass.setName("Arn");
+
+
+
+
     prompt();
 }
 
 
 
-//FUNCTIONS USER
+//FUNCTIONS USER START
 void User::setName(string nm){
     name = nm;
 }
@@ -80,9 +102,48 @@ string User::getPass(){
 }
 
 
+//FUNCTION USER END
 
 
-//FUNCTIONS VIRTUAL ASSISTANT
+
+
+//FUNCTIONS VIRTUAL ASSISTANT START
+
+
+//SETTERS START
+void Virtual_Assistant::setName(string nm){
+    name = nm;
+}
+
+
+
+void Virtual_Assistant::setCustomer(string nm, string pass){
+    customer.setName(nm);
+    customer.setPass(pass);
+}
+//SETTERS END
+
+
+
+
+
+//GETTERS START
+string Virtual_Assistant::getName(){
+    return name;
+}
+
+
+
+string Virtual_Assistant::getCustomer(){
+    return customer.getName();
+}
+
+//GETTERS END
+
+
+
+
+
 void Virtual_Assistant::evaluate(string buffer){
 
     if(buffer == "hello"){
@@ -98,6 +159,15 @@ void Virtual_Assistant::evaluate(string buffer){
     else if(buffer == "time"){
         //calls the command
         Vir_ass.seetime();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(buffer == "setpsw"){
+        //calls the command
+        Vir_ass.setpsw();
         //returns to the prompt
         prompt();
     }
@@ -133,6 +203,7 @@ void Virtual_Assistant::hello(){
 
 
 
+
 void Virtual_Assistant::seetime(){
     time_t rawtime;
     struct tm * timeinfo;
@@ -144,6 +215,57 @@ void Virtual_Assistant::seetime(){
 
 
 
+
+void Virtual_Assistant::setpsw(){
+    char *password = (char*)malloc(sizeof(char) * 25);
+    char sure;
+
+
+    if(!password){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+    }
+
+
+    do{
+        cout << "\nNew Password: ";
+
+        cin >> password;
+
+
+        if(is_space(password)){
+            cout << "\nI'm sorry but your password cannot contain spaces" << endl;
+            cout << "Please try again" << endl;
+
+            prompt();
+        }
+
+
+        cout << "\nYour new password will be: " << password << endl;
+        cout << "Are you sure you want to set this as your new password? (y/n): ";
+
+        cin >> sure;
+
+    }while(sure != 'y' && sure != 'n');
+
+    //create a file
+    ofstream file;
+
+    //open the file
+    file.open("./bin/pass.txt");
+
+    //write to the file
+    file << password << endl;
+
+    //close the file
+    file.close();
+}
+
+//FUNCTIONS VIRTUAL ASSISTANT END
+
+
+
+
+//NORMAL FUNCTIONS START
 void prompt(){
 
     string buffer;
@@ -160,3 +282,4 @@ void prompt(){
     }
 
 }
+//NORMAL FUNCTIONS END 

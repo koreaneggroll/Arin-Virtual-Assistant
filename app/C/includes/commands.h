@@ -15,7 +15,7 @@ bool is_space(char *str);
 #define HELLO "hello" //responds with 'hello + name'
 #define SETPSW "setpsw" //set your password
 #define SETNAME "setname" //set your name
-#define STOP "stop" //halts the program
+#define EXIT "exit" //halts the program
 #define REMINDER "reminder" //alarm
 #define GOOGLE "google" //searches google
 #define YOUTUBE "yt" //searches youtbue
