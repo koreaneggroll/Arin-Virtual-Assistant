@@ -47,8 +47,8 @@ class Virtual_Assistant{
         //actual functions
         void hello();
         void seetime();
-        void setpsw();
-        void setname();
+        void setPsw();
+        void setUserName();
         void reminder();
         void google();
         void youtube();
@@ -167,7 +167,7 @@ void Virtual_Assistant::evaluate(string buffer){
 
     else if(buffer == "setpsw"){
         //calls the command
-        Vir_ass.setpsw();
+        Vir_ass.setPsw();
         //returns to the prompt
         prompt();
     }
@@ -216,23 +216,24 @@ void Virtual_Assistant::seetime(){
 
 
 
-void Virtual_Assistant::setpsw(){
-    char *password = (char*)malloc(sizeof(char) * 25);
+void Virtual_Assistant::setPsw(){
+    char *pass = (char*)malloc(sizeof(char) * 25);
     char sure;
 
 
-    if(!password){
+    if(!pass){
         cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
     }
 
 
     do{
         cout << "\nNew Password: ";
 
-        cin >> password;
+        cin >> pass;
 
 
-        if(is_space(password)){
+        if(is_space(pass)){
             cout << "\nI'm sorry but your password cannot contain spaces" << endl;
             cout << "Please try again" << endl;
 
@@ -240,12 +241,18 @@ void Virtual_Assistant::setpsw(){
         }
 
 
-        cout << "\nYour new password will be: " << password << endl;
+        cout << "\nYour new password will be: " << pass << endl;
         cout << "Are you sure you want to set this as your new password? (y/n): ";
 
         cin >> sure;
 
     }while(sure != 'y' && sure != 'n');
+
+
+
+    Vir_ass.customer.setPass(pass);
+
+
 
     //create a file
     ofstream file;
@@ -254,7 +261,55 @@ void Virtual_Assistant::setpsw(){
     file.open("./bin/pass.txt");
 
     //write to the file
-    file << password << endl;
+    file << pass;
+
+    //close the file
+    file.close();
+}
+
+
+
+
+
+void Virtual_Assistant::setUserName(){
+    char *nm = (char*)malloc(sizeof(char) * 25);
+    char sure;
+
+
+    if(!nm){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    do{
+        cout << "Name: ";
+
+        cin >> nm;
+
+
+        if(is_space(nm)){
+            cout << "\nI'm sorry but you name cannot contain spaces" << endl;
+            prompt();
+        }
+
+
+        cout << "\nAre you sure you want to set this as your name? y/n: ";
+        cin >> sure;
+
+    }while(sure != 'y' && sure != 'n');
+
+
+    Vir_ass.customer.setName(nm);
+
+    //create the file
+    ofstream file;
+
+    //open the file
+    file.open("./bin/name.txt");
+
+    //write to the file
+    file << nm;
 
     //close the file
     file.close();
