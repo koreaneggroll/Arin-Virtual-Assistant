@@ -35,4 +35,3 @@ INSTRUCTIONS{
   * stop = halts the program.
 }
 
-NOTE: this project will be remade in C++ in another repository.
