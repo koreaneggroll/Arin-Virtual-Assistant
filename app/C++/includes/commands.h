@@ -4,7 +4,8 @@
 #include <string.h>
 
 //FUNCTIONS
-bool is_space(char *str);
+bool isSpace(char *str);
+char *replaceSpaces(char *str);
 void clear();
 
 //DEFINES

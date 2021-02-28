@@ -56,6 +56,7 @@ class Virtual_Assistant{
         void reminder();
         void google();
         void youtube();
+        void terminal();
         friend void prompt();
 
 };
@@ -169,6 +170,7 @@ void Virtual_Assistant::evaluate(string buffer){
 
 
 
+
     else if(buffer == "setpsw"){
         //calls the command
         Vir_ass.setPsw();
@@ -176,6 +178,7 @@ void Virtual_Assistant::evaluate(string buffer){
         prompt();
     }
     
+
 
 
     else if(buffer == "reminder"){
@@ -187,12 +190,25 @@ void Virtual_Assistant::evaluate(string buffer){
 
 
 
+
     else if(buffer == "clear"){
         //calls the command
         clear();
         //returns to the prompt
         prompt();
     }
+
+
+
+
+    else if(buffer == "google"){
+        //calls the command
+        Vir_ass.google();
+        //returns to the prompt
+        prompt();
+    }
+
+
 
 
     else{
@@ -203,6 +219,13 @@ void Virtual_Assistant::evaluate(string buffer){
 
 }
 
+
+
+
+void Virtual_Assistant::terminal(){
+    //closes or opens the terminal
+    system("yakuake");
+}
 
 
 
@@ -245,7 +268,7 @@ void Virtual_Assistant::setPsw(){
         cin >> pass;
 
 
-        if(is_space(pass)){
+        if(isSpace(pass)){
             cout << "\nI'm sorry but your password cannot contain spaces" << endl;
             cout << "Please try again" << endl;
 
@@ -300,7 +323,7 @@ void Virtual_Assistant::setUserName(){
         cin >> nm;
 
 
-        if(is_space(nm)){
+        if(isSpace(nm)){
             cout << "\nI'm sorry but you name cannot contain spaces" << endl;
             prompt();
         }
@@ -388,6 +411,49 @@ void Virtual_Assistant::reminder(){
 
 }
 
+
+
+
+void Virtual_Assistant::google(){
+    //waste variable so we can use getline
+    char c;
+    c = getc(stdin);
+
+    char *command = (char*)malloc(sizeof(char) * 35);
+    char *search = (char*)malloc(sizeof(char) * 300);
+
+
+    if(!command){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    if(!search){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    cout << "\n\nGoogle search: ";
+    fgets(search, 300, stdin);
+
+    clock_t begin = clock();
+
+    search = replaceSpaces(search);
+
+    strcpy(command, "brave https://google.com/search?q=");
+    strcat(command, search);
+
+    system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //closes the terminal
+    Vir_ass.terminal();
+}
 
 
 

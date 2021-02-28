@@ -1,7 +1,7 @@
 #include "../includes/commands.h"
 
 
-bool is_space(char *str){
+bool isSpace(char *str){
     bool is_space;
 
     int len = strlen(str);
@@ -15,6 +15,17 @@ bool is_space(char *str){
     
     return is_space;
     
+}
+
+
+char *replaceSpaces(char *str){
+    for(int i = 0; i < strlen(str); i++){
+        if(str[i] == ' '){
+            str[i] = '+';
+        }
+    }
+
+    return str;
 }
 
 
