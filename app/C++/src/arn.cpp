@@ -57,6 +57,7 @@ class Virtual_Assistant{
         void google();
         void youtube();
         void stackoverflow();
+        void wikipedia();
         void terminal();
         friend void prompt();
 
@@ -221,9 +222,20 @@ void Virtual_Assistant::evaluate(string buffer){
 
 
 
+
     else if(buffer == "so"){
         //calls the command
         Vir_ass.stackoverflow();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+
+    else if(buffer == "wiki"){
+        //calls the command
+        Vir_ass.wikipedia();
         //returns to the prompt
         prompt();
     }
@@ -574,6 +586,47 @@ void Virtual_Assistant::stackoverflow(){
     //frees some memory(which doesn't work aparently)
     //free(command);
     //free(search);
+}
+
+
+
+void Virtual_Assistant::wikipedia(){
+
+    //waste variable
+    char c;
+    c = getc(stdin);
+
+    char *command = (char*)malloc(sizeof(char) * 37);
+    char *search = (char*)malloc(sizeof(char) * 300);
+
+    if(!command){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+    if(!search){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    cout << "\n\nWiki search: ";
+    fgets(search, 300, stdin);
+
+    for(int i = 0; i < strlen(search); i++){
+        if(search[i] == ' '){
+            search[i] = '_';
+        }
+    }
+
+    strcpy(command, "brave https://en.wikipedia.org/wiki/");
+    strcat(command, search);
+
+    system(command);
+
+
+    //closes the terminal
+    Vir_ass.terminal();
 }
 
 
