@@ -634,8 +634,8 @@ void reminder(){
     }
     //Starts alarm if everything went well
     else{
-        //int htos = h * 3600;//stands for hours to seconds
-        sleep(h);
+        int htos = h * 3600;//stands for hours to seconds
+        sleep(htos);
 
         system(command);
     }
@@ -650,8 +650,8 @@ void reminder(){
     }
     //Starts alarm if everything went well
     else{
-        //int mtos = m * 60;//stands for minutes to seconds
-        sleep(m);
+        int mtos = m * 60;//stands for minutes to seconds
+        sleep(mtos);
         
         system(command);
     }

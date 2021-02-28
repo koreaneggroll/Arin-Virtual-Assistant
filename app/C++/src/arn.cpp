@@ -3,6 +3,8 @@
 #include <time.h>
 #include "../includes/commands.h"
 #include <fstream>
+#include <stdlib.h>
+#include <unistd.h>
 
 
 using namespace std;
@@ -17,8 +19,10 @@ class User{
         string name;
         string password;
     public:
+        //setters
         void setName(string nm);
         void setPass(string ps);
+        //getters
         string getName();
         string getPass();
 };
@@ -171,7 +175,15 @@ void Virtual_Assistant::evaluate(string buffer){
         //returns to the prompt
         prompt();
     }
+    
 
+
+    else if(buffer == "reminder"){
+        //calls the command
+        Vir_ass.reminder();
+        //returns to the prompt
+        prompt();
+    }
 
 
 
@@ -314,6 +326,70 @@ void Virtual_Assistant::setUserName(){
     //close the file
     file.close();
 }
+
+
+
+
+void Virtual_Assistant::reminder(){
+    int h, m, s;
+
+
+    cout << "\nHours from now: ";
+    cin >> h;
+
+
+    if(h > 24 || h < 0){
+        cout << "\n\nNot a valid time\n\n";
+        prompt();
+    }
+
+
+    else{
+        int htos = h * 3600;
+        sleep(htos);
+
+        system("notify-send alarm");
+    }
+
+
+    cout << "\nMinutes from now: ";
+    cin >> m;
+
+
+    if(m > 60 || m < 0){
+        cout << "\n\nNot a valid time\n\n";
+        prompt();
+    }
+
+
+    else{
+        int mtos = m * 60;
+        sleep(mtos);
+
+        system("notify-send alarm");
+    }
+
+
+    cout << "\nSeconds from now: ";
+    cin >> s;
+
+
+    if(s > 60 || s < 0){
+        cout << "\n\nNot a valid time\n\n";
+        prompt();
+    }
+
+
+    else{
+        sleep(s);
+
+        system("notify-send alarm");
+    }
+
+}
+
+
+
 
 //FUNCTIONS VIRTUAL ASSISTANT END
 
