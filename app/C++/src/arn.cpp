@@ -56,6 +56,7 @@ class Virtual_Assistant{
         void reminder();
         void google();
         void youtube();
+        void stackoverflow();
         void terminal();
         friend void prompt();
 
@@ -214,6 +215,15 @@ void Virtual_Assistant::evaluate(string buffer){
     else if(buffer == "yt"){
         //calls the command
         Vir_ass.youtube();
+        //returns to the prompt
+        prompt();
+    }
+
+
+
+    else if(buffer == "so"){
+        //calls the command
+        Vir_ass.stackoverflow();
         //returns to the prompt
         prompt();
     }
@@ -461,6 +471,11 @@ void Virtual_Assistant::google(){
 
     //closes the terminal
     Vir_ass.terminal();
+
+
+    //frees memory(which doesn't work aparently)
+    //free(command);
+    //free(search);
 }
 
 
@@ -503,6 +518,62 @@ void Virtual_Assistant::youtube(){
 
     //close the terminal
     Vir_ass.terminal();
+
+
+    //frees memory(which doesn't work aparently)
+    //free(command);
+    //free(search);
+}
+
+
+
+
+void Virtual_Assistant::stackoverflow(){
+    
+    //waste variable
+    char c;
+    c = getc(stdin);
+
+
+    char *command = (char*)malloc(sizeof(char) * 42);
+    char *search = (char*)malloc(sizeof(char) * 300);
+
+
+    if(!command){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+    if(!search){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    cout << "\n\nStackoverflow search: ";
+    fgets(search, 300, stdin);
+
+
+    clock_t begin = clock();
+
+    search = replaceSpaces(search);
+
+    strcpy(command, "brave https://stackoverflow.com/search?q=");
+    strcat(command, search);
+
+    system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+
+    
+    //frees some memory(which doesn't work aparently)
+    //free(command);
+    //free(search);
 }
 
 
