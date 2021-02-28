@@ -59,6 +59,24 @@ class Virtual_Assistant{
         void stackoverflow();
         void wikipedia();
         void terminal();
+        void editor();
+        void todo();
+        void skype();
+        void music();
+        void school();
+        void discord();
+        void github();
+        void notes();
+        void game();
+        void paint();
+        void math();
+        void writer();
+        void impress();
+        void whatsapp();
+        void startup();
+        void ulauncher();
+        void temperature();
+        void day();
         friend void prompt();
 
 };
@@ -74,7 +92,6 @@ vs Vir_ass;
 //FUNCTION PROTOTYPES START
 void prompt();
 //FUNCTION PROTOTYPES END
-
 
 
 int main(void){
@@ -93,35 +110,27 @@ void User::setName(string nm){
     name = nm;
 }
 
-
 void User::setPass(string ps){
     password = ps;
 }
-
 
 string User::getName(){
     return name;
 }
 
-
 string User::getPass(){
     return password;
 }
-
-
 //FUNCTION USER END
 
 
 
 
 //FUNCTIONS VIRTUAL ASSISTANT START
-
-
 //SETTERS START
 void Virtual_Assistant::setName(string nm){
     name = nm;
 }
-
 
 
 void Virtual_Assistant::setCustomer(string nm, string pass){
@@ -140,7 +149,6 @@ string Virtual_Assistant::getName(){
 }
 
 
-
 string Virtual_Assistant::getCustomer(){
     return customer.getName();
 }
@@ -148,98 +156,142 @@ string Virtual_Assistant::getCustomer(){
 //GETTERS END
 
 
-
-
-
 void Virtual_Assistant::evaluate(string buffer){
 
     if(buffer == "hello"){
-        //calls the command
         Vir_ass.hello();
-        //returns to the prompt
         prompt();
     }
-
-    
-
 
     else if(buffer == "time"){
-        //calls the command
         Vir_ass.seetime();
-        //returns to the prompt
         prompt();
     }
 
-
-
-
     else if(buffer == "setpsw"){
-        //calls the command
         Vir_ass.setPsw();
-        //returns to the prompt
         prompt();
     }
     
-
-
-
     else if(buffer == "reminder"){
-        //calls the command
         Vir_ass.reminder();
-        //returns to the prompt
         prompt();
     }
-
-
-
 
     else if(buffer == "clear"){
-        //calls the command
         clear();
-        //returns to the prompt
         prompt();
     }
-
-
-
 
     else if(buffer == "google"){
-        //calls the command
         Vir_ass.google();
-        //returns to the prompt
         prompt();
     }
-
-
-
 
     else if(buffer == "yt"){
-        //calls the command
         Vir_ass.youtube();
-        //returns to the prompt
         prompt();
     }
-
-
-
 
     else if(buffer == "so"){
-        //calls the command
         Vir_ass.stackoverflow();
-        //returns to the prompt
         prompt();
     }
-
-
-
 
     else if(buffer == "wiki"){
-        //calls the command
         Vir_ass.wikipedia();
-        //returns to the prompt
         prompt();
     }
 
+    else if(buffer == "terminal"){
+        Vir_ass.terminal();
+        prompt();
+    }
+
+    else if(buffer == "editor"){
+        Vir_ass.editor();
+        prompt();
+    }
+
+    else if(buffer == "todo"){
+        Vir_ass.todo();
+        prompt();
+    }
+
+    else if(buffer == "skype"){
+        Vir_ass.skype();
+        prompt();
+    }
+
+    else if(buffer == "music"){
+        Vir_ass.music();
+        prompt();
+    }
+
+    else if(buffer == "school"){
+        Vir_ass.school();
+        prompt();
+    }
+
+    else if(buffer == "discord"){
+        Vir_ass.discord();
+        prompt();
+    }
+
+    else if(buffer == "github"){
+        Vir_ass.github();
+        prompt();
+    }
+
+    else if(buffer == "notes"){
+        Vir_ass.notes();
+        prompt();
+    }
+
+    else if(buffer == "game"){
+        Vir_ass.game();
+        prompt();
+    }
+
+    else if(buffer == "paint"){
+        Vir_ass.paint();
+        prompt();
+    }
+
+    else if(buffer == "math"){
+        Vir_ass.math();
+        prompt();
+    }
+
+    else if(buffer == "impress"){
+        Vir_ass.impress();
+        prompt();
+    }
+
+    else if(buffer == "wp"){
+        Vir_ass.whatsapp();
+        prompt();
+    }
+
+    else if(buffer == "startup"){
+        Vir_ass.startup();
+        prompt();
+    }
+    
+    else if(buffer == "ulauncher"){
+        Vir_ass.ulauncher();
+        prompt();
+    }
+
+    else if(buffer == "temp"){
+        Vir_ass.temperature();
+        prompt();
+    }
+
+    else if(buffer == "day"){
+        Vir_ass.day();
+        prompt();
+    }
 
     else{
         cout << endl;
@@ -250,14 +302,141 @@ void Virtual_Assistant::evaluate(string buffer){
 }
 
 
-
-
 void Virtual_Assistant::terminal(){
     //closes or opens the terminal
     system("yakuake");
 }
 
 
+void Virtual_Assistant::editor(){
+
+    clock_t begin = clock();
+
+    //use your preffered text editor
+    //open the app
+    system("code");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::todo(){
+    //use your preffered to do app
+    system("todo");
+}
+
+
+void Virtual_Assistant::skype(){
+    clock_t begin = clock();
+
+    //open the app
+    system("skype");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::music(){
+    clock_t begin = clock();
+
+    //use your preffered streaming service
+    //open the app
+    system("spotify");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::school(){
+    //open the app
+    clock_t begin = clock();
+    system("brave https://classroom.google.com/u/2/h");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("\n\nIt took %f sec\n\n", time_spent);
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::discord(){
+    //open the app
+    clock_t begin = clock();
+    system("discord");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::github(){
+
+    clock_t begin = clock();
+
+    //this only works if you got github desktop
+    system("github");
+    //you can change this to your own github page
+    system("brave https://github.com/koreaneggroll");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::notes(){
+
+    clock_t begin = clock();
+
+    //open the app
+    system("simplenote");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //closes the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::game(){
+    clock_t begin = clock();
+
+    //open the app
+    system("steam");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
 
 
 void Virtual_Assistant::hello(){
@@ -267,6 +446,157 @@ void Virtual_Assistant::hello(){
 }
 
 
+void Virtual_Assistant::paint(){
+    clock_t begin = clock();
+
+    //open the app
+    system("pinta");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::math(){
+        
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --math");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::writer(){
+        
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --writer");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::impress(){
+    clock_t begin = clock();
+
+    //open the app
+    system("loffice --impress");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::whatsapp(){
+        
+    clock_t begin = clock();
+
+    //open the app
+    system("brave https://web.whatsapp.com/");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::startup(){
+
+    clock_t begin = clock();
+
+    //open the apps
+    Vir_ass.ulauncher();
+    Vir_ass.whatsapp();
+    Vir_ass.editor();
+    Vir_ass.github();
+    Vir_ass.music();
+    Vir_ass.youtube();
+
+
+    /*
+        Here i'm trying to only call the 'school' function only on schooldays
+        but idk how :|
+    */
+    
+    
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+}
+
+
+void Virtual_Assistant::ulauncher(){
+
+    clock_t begin = clock();
+
+    //open app
+    system("ulauncher");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //closes the terminal
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::temperature(){
+    clock_t begin = clock();
+
+
+    //google whats the temperature
+    system("brave https://www.google.com/search?q=whats+the+temperature+outside&oq=whats+the+temperature+outside&aqs=chrome..69i57.6492j0j1&sourceid=chrome&ie=UTF-8");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+
+    //close the temperature
+    Vir_ass.terminal();
+}
+
+
+void Virtual_Assistant::day(){
+    clock_t begin = clock();
+
+
+    //google what day is it
+    system("brave https://www.google.com/search?q=what+day+is+it+%3F&oq=what+day+is+it+%3F+&aqs=chrome..69i57j69i60.2066j0j1&sourceid=chrome&ie=UTF-8");
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+
+    //close the terminal
+    Vir_ass.terminal();
+}
 
 
 void Virtual_Assistant::seetime(){
@@ -277,8 +607,6 @@ void Virtual_Assistant::seetime(){
     timeinfo = localtime ( &rawtime );
     cout << "\nCurrent local time and date" << asctime (timeinfo) << endl;
 }
-
-
 
 
 void Virtual_Assistant::setPsw(){
@@ -333,9 +661,6 @@ void Virtual_Assistant::setPsw(){
 }
 
 
-
-
-
 void Virtual_Assistant::setUserName(){
     char *nm = (char*)malloc(sizeof(char) * 25);
     char sure;
@@ -379,8 +704,6 @@ void Virtual_Assistant::setUserName(){
     //close the file
     file.close();
 }
-
-
 
 
 void Virtual_Assistant::reminder(){
@@ -442,8 +765,6 @@ void Virtual_Assistant::reminder(){
 }
 
 
-
-
 void Virtual_Assistant::google(){
     //waste variable so we can use getline
     char c;
@@ -491,8 +812,6 @@ void Virtual_Assistant::google(){
 }
 
 
-
-
 void Virtual_Assistant::youtube(){
     //waste variable so we can use getline
     char c;
@@ -536,8 +855,6 @@ void Virtual_Assistant::youtube(){
     //free(command);
     //free(search);
 }
-
-
 
 
 void Virtual_Assistant::stackoverflow(){
@@ -589,7 +906,6 @@ void Virtual_Assistant::stackoverflow(){
 }
 
 
-
 void Virtual_Assistant::wikipedia(){
 
     //waste variable
@@ -628,8 +944,6 @@ void Virtual_Assistant::wikipedia(){
     //closes the terminal
     Vir_ass.terminal();
 }
-
-
 //FUNCTIONS VIRTUAL ASSISTANT END
 
 
