@@ -211,6 +211,14 @@ void Virtual_Assistant::evaluate(string buffer){
 
 
 
+    else if(buffer == "yt"){
+        //calls the command
+        Vir_ass.youtube();
+        //returns to the prompt
+        prompt();
+    }
+
+
     else{
         cout << endl;
         cout << "I'm sorry, I don't understand whats '" << buffer << "'" << endl;
@@ -455,6 +463,47 @@ void Virtual_Assistant::google(){
     Vir_ass.terminal();
 }
 
+
+
+
+void Virtual_Assistant::youtube(){
+    //waste variable so we can use getline
+    char c;
+    c = getc(stdin);
+
+    char *command = (char*)malloc(sizeof(char) * 52);
+    char *search = (char*)malloc(sizeof(char) * 300);
+
+    if(!command){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+    if(!search){
+        cout << "\n\n\nERR: Couldn't allocate memory\n\n\n";
+        exit(1);
+    }
+
+
+    cout << "Youtube search: ";
+    fgets(search, 300, stdin);
+
+    clock_t begin = clock();
+
+    search = replaceSpaces(search);
+
+    strcpy(command, "brave https://www.youtube.com/results?search_query=");
+    strcat(command, search);
+
+    system(command);
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    cout << "\n\nIt took " << time_spent << " sec\n\n";
+
+    //close the terminal
+    Vir_ass.terminal();
+}
 
 
 //FUNCTIONS VIRTUAL ASSISTANT END

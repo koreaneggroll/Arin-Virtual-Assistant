@@ -795,7 +795,7 @@ void stackoverflow(){
         }
     }
 
-    printf("%s\n", search);
+    //printf("%s\n", search);
 
 
     strcpy(command, "brave https://stackoverflow.com/search?q=");
