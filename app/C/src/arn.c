@@ -1,41 +1,7 @@
-//INCLUDES
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <time.h>
-//#include <signal.h>
 #include "../includes/commands.h"
-#include <stdbool.h>
-
-
-
-//DATA
-
-typedef struct{
-
-    char name[25];
-    char password[25];
-
-}User;
-
-typedef User usr;
-
 
 usr user;
-
-
-typedef struct{
-
-    char name[25];
-
-}Virtual_Assistant;
-
-typedef Virtual_Assistant vs;
-
-
 vs Vir_ass = {"Arn"};
-
 
 
 

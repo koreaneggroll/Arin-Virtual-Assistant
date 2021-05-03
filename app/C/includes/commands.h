@@ -1,6 +1,12 @@
 //INCLUDES
 #include <stdbool.h>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
+#include "./user.h"
+#include "./va.h"
 
 
 //FUNCTIONS
